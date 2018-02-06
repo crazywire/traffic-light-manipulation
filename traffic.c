@@ -9,8 +9,7 @@
 #include <avr/interrupt.h>
 
 const float period = 1e-3;
-const float fclk = 14.7456e6/64;
-const short fblink = 
+const float fclk = 14.7456e6/64; 
 unsigned short time_count = 0;
 
 enum light_color{
