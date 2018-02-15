@@ -81,7 +81,7 @@ int main(void)
 	PORTD = 0;
 	traffic_light = red;
 	
-	TIMSK0 |= (1<<OCIE0A);
+	TIMSK0 |= (1<<OCIE0A); //enable Output compare interrupt
 	TCCR0A = 0;
 	TCCR0B = (1<<CS01)|(1<<CS00);
 	OCR0A = (int)(period*fclk -1);
@@ -108,11 +108,10 @@ int main(void)
 		{
 			PORTD = (1<<PD0); //turn on green light only
 			
-			pedestrian();
-			 // use to control the pedestrian light
+			pedestrian(); // use to control the pedestrian light
 		}
 		
-		//use PB0 to reset traffic light
+		//reset traffic light button
 		if (PINB & (1<<PB0))
 		{
 			TCNT0 =0;
